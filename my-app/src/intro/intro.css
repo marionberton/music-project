@@ -1,0 +1,26 @@
+span {
+  color: #c56bd6;
+}
+
+.intro {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  font-size: 35px;
+}
+.myintro {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+@media only screen and (min-width: 1024px) {
+  h1 {
+    font-size: 46px;
+  }
+  .myintro {
+    font-size: 18px;
+    width: 50%;
+  }
+}

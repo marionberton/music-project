@@ -1,0 +1,26 @@
+.main {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #4b4b4b;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f6fa;
+  
+}
+
+@media only screen and (min-width: 1024px) {
+  .cardcontainer {
+    display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  }
+
+  .itemcontainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  
+
+
+}
+

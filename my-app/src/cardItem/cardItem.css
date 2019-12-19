@@ -1,0 +1,37 @@
+
+.eddisplaycontainer {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 10px;
+  
+}
+
+.textcontainer {
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.title {
+  color: #C56BD6;
+}
+
+.date {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.jobtitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 1024px) {
+  .eddisplaycontainer {
+    
+    flex-direction: column;
+    
+  }
+
+
+}
