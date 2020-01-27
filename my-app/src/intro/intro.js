@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./intro.css";
+import Radium, { StyleRoot } from 'radium';
 /*export const Intro = () => {
 	
 	const text = [{title:'passionate', color:'#C56BD6'},
@@ -67,6 +68,8 @@ export class Intro extends React.Component {
     });
   }
   render() {
+   
+
     const number = this.state.number;
     return (
       <div className="intro">

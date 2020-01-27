@@ -1,0 +1,23 @@
+footer {
+  border-top: 2px solid #e2dfe1;
+}
+
+.some-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: #4b4b4b;
+}
+
+.some-container {
+  height: 46px;
+  display: inline-block;
+  width: 46px;
+  margin: 0 30px;
+}
+
+.some {
+  width: 100%;
+  height: 100%;
+}

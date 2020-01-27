@@ -7,6 +7,15 @@
   
 }
 
+.desktop {
+  display: none;
+}
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+}
+
 @media only screen and (min-width: 1024px) {
   .cardcontainer {
     display: flex;
@@ -19,8 +28,16 @@
     flex-direction: row;
   }
 
-  
+   .desktop {
+    display: flex;
+    flex-direction: column;
+  }
 
+   .mobile {
+    display: none;
+  }
+
+ 
 
 }
 

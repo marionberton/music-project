@@ -1,11 +1,14 @@
 import React from "react";
 import "./cardItem.css";
+import Radium, { StyleRoot } from 'radium';
 
 export class Item extends React.Component {
   render() {
+
+    
     return (
-      
-        <div className="eddisplaycontainer">
+     
+        <div className="eddisplaycontainer" >
           <div>
             <object type="image/svg+xml" data={this.props.picture}></object>
           </div>
@@ -16,8 +19,10 @@ export class Item extends React.Component {
             <p>{this.props.paragraph}</p>
           </div>
         </div>
+      
        
     );
   }
 }
+
 
