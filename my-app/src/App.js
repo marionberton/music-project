@@ -64,6 +64,14 @@ export class App extends React.Component {
                     jobTitle="Product Marketing"
                     paragraph="Increased the applicable social media presence and beta user's growth by evaluating product improvement through A/B testing, attending pitch events, and communicating with artists to understand the competitive landscape; identified strategic opportunities and threats."
                   />
+                  <Item
+                    picture="./img/work.svg"
+                    title="The SoCal Group "
+                    date="Sep 2016 - Jan 2017"
+                    jobTitle="Account Executive"
+                    paragraph="In charge of getting new and retaining existing accounts for the company’s main client, Ooma, Inc. through B2B sales to small businesses. 
+											Daily and weekly data and figures’ reports and Incorporated a quota-oriented goals system for performance analysis for the company and the client."
+                  />
                 </div>
               </Section>
             </div>
@@ -113,6 +121,14 @@ export class App extends React.Component {
                   date="Mar 2017 - Apr 2018"
                   jobTitle="Product Marketing"
                   paragraph="Increased the applicable social media presence and beta user's growth by evaluating product improvement through A/B testing, attending pitch events, and communicating with artists to understand the competitive landscape; identified strategic opportunities and threats."
+                />
+                <Item
+                  picture="./img/work.svg"
+                  title="The SoCal Group "
+                  date="Sep 2016 - Jan 2017"
+                  jobTitle="Account Executive"
+                  paragraph="In charge of getting new and retaining existing accounts for the company’s main client, Ooma, Inc. through B2B sales to small businesses. 
+											Daily and weekly data and figures’ reports and Incorporated a quota-oriented goals system for performance analysis for the company and the client."
                 />
               </div>
             </Section>

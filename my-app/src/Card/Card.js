@@ -17,7 +17,8 @@ export class Card extends React.Component {
     const style = {
       color: "white",
       padding: "5px 20px",
-      cursor: "pointer",
+			cursor: "pointer",
+			
       borderRadius: "25px",
       border: "none",
       fontSize: "16px",
