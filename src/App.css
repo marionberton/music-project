@@ -1,10 +1,10 @@
 .main {
   font-family: Helvetica, Arial, sans-serif;
   color: #4b4b4b;
-  margin: 0;
+  margin: auto;
+  max-width: 1440px;
   padding: 0;
   background-color: #f5f6fa;
-  
 }
 
 .desktop {
@@ -19,8 +19,9 @@
 @media only screen and (min-width: 1024px) {
   .cardcontainer {
     display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 20px;
   }
 
   .itemcontainer {
@@ -28,16 +29,12 @@
     flex-direction: row;
   }
 
-   .desktop {
+  .desktop {
     display: flex;
     flex-direction: column;
   }
 
-   .mobile {
+  .mobile {
     display: none;
   }
-
- 
-
 }
-

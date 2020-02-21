@@ -9,7 +9,10 @@ export default () => (
         </a>
       </div>
       <div className="some-container">
-        <a target="_blank" href="https://linkedin.com/in/marion-berton-b906b5b2v">
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/marion-berton-b906b5b2/"
+        >
           <img className="some" src="./img/linkedin.svg" />
         </a>
       </div>

@@ -14,11 +14,11 @@ export class Card extends React.Component {
 	}*/
 
   render() {
-    const style = {
+    const button = {
       color: "white",
       padding: "5px 20px",
-			cursor: "pointer",
-			
+      cursor: "pointer",
+      outline: "none",
       borderRadius: "25px",
       border: "none",
       fontSize: "16px",
@@ -38,7 +38,7 @@ export class Card extends React.Component {
       <div className="containerwrapper">
         <div className="container">
           <img className="image" src={this.props.picture} />
-          <button type="button" style={style} onClick={this.props.onClick}>
+          <button type="button" style={button} onClick={this.props.onClick}>
             View
           </button>
         </div>

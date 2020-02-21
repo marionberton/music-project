@@ -1,8 +1,8 @@
 .containerwrapper {
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  width: fit-content;
+  /* margin: 20px; */
+  width: 325px;
 }
 
 .container {
