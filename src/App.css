@@ -16,12 +16,16 @@
   flex-direction: column;
 }
 
+.cardcontainer {
+  margin: 0 20px;
+}
+
 @media only screen and (min-width: 1024px) {
   .cardcontainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 20px;
+    
   }
 
   .itemcontainer {

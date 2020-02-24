@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   /* margin: 20px; */
-  width: 325px;
+  width: 100%;
 }
 
 .container {
@@ -17,25 +17,25 @@
   border-radius: 15px;
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 320px) {
+  .image {
+    height: 380px;
+    width: 280px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
   .image {
     width: 552px;
     height: 350px;
-}
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .image {
     width: 325px;
+  }
 }
-
-
-}
-
-
-
-
-
 
 .number {
   color: #c56bd6;
@@ -43,5 +43,3 @@
   font-size: 32px;
   margin: 8px 0;
 }
-
-
