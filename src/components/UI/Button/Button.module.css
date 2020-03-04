@@ -1,0 +1,23 @@
+.Button {
+		border: 1px solid #4A90E2;
+		border-radius: 25px;
+    color: #000000;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+.Button:hover {
+	border: 1px solid rgb(247, 152, 87);;
+}
+.Selected {
+ background-color: rgb(74, 144, 226);
+ color: white;
+}
+
+.Selected:hover {
+background-color: rgb(74, 144, 226, 0.6);
+}

@@ -1,44 +1,58 @@
-.main {
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
   font-family: Helvetica, Arial, sans-serif;
-  color: #4b4b4b;
-  margin: auto;
-  max-width: 1440px;
-  padding: 0;
-  background-color: #f5f6fa;
+  
 }
 
-.desktop {
-  display: none;
+#root {
+  position: relative;
+  min-height: 100vh;
 }
 
-.mobile {
+.App {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+/* 
+.flexGrow {
+  flex: 1 1 0;
+  background-color: sandybrown;
+}
+
+.flexVertical {
   display: flex;
   flex-direction: column;
 }
 
-.cardcontainer {
-  margin: 0 20px;
+.flexHorizontal {
+  display: flex;
+  flex-direction: row;
 }
 
-@media only screen and (min-width: 1024px) {
-  .cardcontainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-  }
-
-  .itemcontainer {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .desktop {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mobile {
-    display: none;
-  }
+.bluebg {
+  background-color: blue;
 }
+
+
+
+.bottomBar {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid purple;
+}
+
+.leftContainer {
+  display: flex;
+  background-color: white;
+}
+
+.rightContainer {
+  display: flex;
+  background-color: sandybrown;
+} */
