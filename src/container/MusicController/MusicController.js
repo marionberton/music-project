@@ -5,9 +5,9 @@ import Search from "../../components/Search/Search";
 import PlayList from "../../components/PlayList/PlayList";
 
 const MusicController = props => {
-  const [data, setData] = useState(null);
-  const [avatar, setAvatar] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
+  // const [avatar, setAvatar] = useState(null);
+  const [country, setCountry] = useState(null);
   //[] destructuring an array
   // {} destructuring an object
   // const state = useState(null);
@@ -16,9 +16,11 @@ const MusicController = props => {
 
   useEffect(() => {
     //users url get artist and use avatar in playlist
-    const getData = async (country = "France") => {
+    let cancelled = false;
+
+    const getData = async () => {
       const users = await window.fetch(
-        `https://api.soundcloud.com/users/?client_id=PlZuraHdl9926OYs9P9TdcEHyEXIYeag&q=${country}`
+        `https://api.soundcloud.com/users/?client_id=PlZuraHdl9926OYs9P9TdcEHyEXIYeag&q=${country.name}`
       );
       const usersJSON = await users.json();
       const username = usersJSON[0].username;
@@ -30,23 +32,23 @@ const MusicController = props => {
 
       const tracksJSON = await tracks.json();
 
-      setData(tracksJSON);
-      setAvatar(usersJSON[0].avatar_url);
-      setIsLoading(false);
+      if (!cancelled) {
+        setData(tracksJSON);
+        // setAvatar(usersJSON[0].avatar_url);
+      }
     };
-    getData("France");
-  }, []); //by default useEffect run always, infinite loop we put the empty array so it runs once
-
+    if (country !== null) {
+      getData();
+    }
+    return () => (cancelled = true);
+  }, [country]); //by default useEffect run always, infinite loop we put the empty array so it runs once
 
   return (
     <>
-      { isLoading && <p>Data is loading..</p>}
-      {avatar === null ? null : <img src={avatar} />}
-      <pre style={{ textAlign: "left" }}>
-        {JSON.stringify(data, null, 2, "\n")}
-      </pre>
-      <Search data={data}/>
-      <PlayList />
+      {/* {avatar === null ? null : <img src={avatar} />} */}
+
+      <Search onResult={setCountry} />
+      <PlayList tracks={data} />
     </>
   );
 };
