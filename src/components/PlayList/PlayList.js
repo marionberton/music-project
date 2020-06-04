@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./PlayList.module.css";
-import Album from "../PlayList/Album/Album";
-import PlayButton from "../PlayList/PlayButton/PlayButton";
-import jLefty from "../../assets/images/group-3.svg";
+import AlbumCover from "../../assets/images/album.jpg";
+import { Player } from "../PlayList/Player/player";
 
-const playList = ({ tracks }) => (
-  <div className={classes.PlayList}>
-    <div className={classes.Left}>
-      <Album />
-      <PlayButton />
-    </div>
-    <div className={classes.Right}>
-      {tracks.map(track => (
-        <img src={track.artwork_url} />
-      ))}
-    </div>
-    <pre style={{ textAlign: "left" }}>
-      {JSON.stringify(tracks, null, 2, "\n")}
-    </pre>
-  </div>
-);
+const PlayList = ({ tracks = [] }) => {
+  const [avatar, setAvatar] = useState(tracks[0]);
+  //console.log(tracks)
+  return (
+    <div className={classes.PlayList}>
+      <div className={classes.Left}>
+        <div className={classes.Album}>
+          <div>
+            <img src={AlbumCover} />
+          </div>
+          <div>
+            <h3>artist name</h3>
+            <p>song title</p>
+          </div>
+        </div>
+        <Player tracks={tracks} />
+      </div>
 
-export default playList;
+      <div className={classes.Right}>
+        {tracks.map((track) => (
+          <img
+            key={track.album.images[0].url}
+            src={track.album.images[0].url}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PlayList;

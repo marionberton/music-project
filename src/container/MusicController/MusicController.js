@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
 import PlayList from "../../components/PlayList/PlayList";
 
-const MusicController = props => {
-  const [data, setData] = useState([]);
-  // const [avatar, setAvatar] = useState(null);
+const MusicController = (props) => {
+  const [data, setData] = useState({});
+
   const [country, setCountry] = useState(null);
   //[] destructuring an array
   // {} destructuring an object
@@ -16,27 +16,35 @@ const MusicController = props => {
 
   useEffect(() => {
     //users url get artist and use avatar in playlist
-    let cancelled = false;
+    let cancelled = false; //cleanup
 
     const getData = async () => {
-      const users = await window.fetch(
-        `https://api.soundcloud.com/users/?client_id=PlZuraHdl9926OYs9P9TdcEHyEXIYeag&q=${country.name}`
-      );
-      const usersJSON = await users.json();
-      const username = usersJSON[0].username;
-      // setData(usersJSON[0].username);
+      try {
+        const tracks = await window.fetch(
+          `https://api.spotify.com/v1/search?q=${country.name}&type=track&limit=5`,
+          {
+            headers: {
+              Authorization:
+                "Bearer BQDfX8vecGb8jLjTfTpsiZzmTDjFE6gsqmtG2uLDZXB7t_dueuTqkEPDPCnjGEPG94RGKXJIvme4QK9uNNU",
+            },
+            // Client ID 7b4f5ead24504d808423f99c0a8824a8
+            // Client Secret 1f712cee9829498dbbee43533a1848a9
+            // Base64 Encoded (id:secret) N2I0ZjVlYWQyNDUwNGQ4MDg0MjNmOTljMGE4ODI0YTg6MWY3MTJjZWU5ODI5NDk4ZGJiZWU0MzUzM2ExODQ4YTk=
+            // curl -X "POST" -H "Authorization: Basic N2I0ZjVlYWQyNDUwNGQ4MDg0MjNmOTljMGE4ODI0YTg6MWY3MTJjZWU5ODI5NDk4ZGJiZWU0MzUzM2ExODQ4YTk=" -d grant_type=client_credentials https://accounts.spotify.com/api/token
+            // BQB5WiV0gcPMzgZKRVNPwmeX8xZxvqW2zN6k7mPTyhFSoR1LqRFrNU4kW31jIcpEK-mhXGLJvjBRDCVCl-E
+          }
+        );
 
-      const tracks = await window.fetch(
-        `https://api.soundcloud.com/tracks/?client_id=PlZuraHdl9926OYs9P9TdcEHyEXIYeag&q=${username}`
-      );
+        const data = await tracks.json();
 
-      const tracksJSON = await tracks.json();
-
-      if (!cancelled) {
-        setData(tracksJSON);
-        // setAvatar(usersJSON[0].avatar_url);
+        if (!cancelled) {
+          setData(data);
+        }
+      } catch (e) {
+        console.log("The Api is curently not working :/");
       }
     };
+
     if (country !== null) {
       getData();
     }
@@ -45,10 +53,8 @@ const MusicController = props => {
 
   return (
     <>
-      {/* {avatar === null ? null : <img src={avatar} />} */}
-
       <Search onResult={setCountry} />
-      <PlayList tracks={data} />
+      <PlayList tracks={data.tracks?.items} />
     </>
   );
 };
@@ -60,3 +66,5 @@ const MusicController = props => {
 // }
 
 export default MusicController;
+
+//https://api-v2.soundcloud.com/payments/consumer-subscriptions/active?client_id=TyQAtemcOqFFQTCV2qqy3rmP9cOn066j&app_version=1584447615&app_locale=en
