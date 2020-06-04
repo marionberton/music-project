@@ -25,7 +25,7 @@ const MusicController = (props) => {
           {
             headers: {
               Authorization:
-                "Bearer BQDfX8vecGb8jLjTfTpsiZzmTDjFE6gsqmtG2uLDZXB7t_dueuTqkEPDPCnjGEPG94RGKXJIvme4QK9uNNU",
+                "Bearer BQBDMxz-j7tFGxcljN4G9nG8mYST8cFpesP4zBhXdZnxXHc86353buD7XhYti9TsUc1LDZSfqvt79IA5JxJxCTq_ON8va5LLN1D_GXEOv-l5zhfCjZ6VEWt2tEKkIcyFcAkJgUbuQ6iWnq8760muk7Opq10YcqdC6p4",
             },
             // Client ID 7b4f5ead24504d808423f99c0a8824a8
             // Client Secret 1f712cee9829498dbbee43533a1848a9

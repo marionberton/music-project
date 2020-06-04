@@ -1,4 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
 
 export const Player = ({ tracks = [] }) => {
   useEffect(() => {
@@ -22,13 +26,20 @@ export const Player = ({ tracks = [] }) => {
         );
       });
     };
-    console.log(window.player);
     if (window.player && tracks.length) {
-      play({
-        playerInstance: window.player,
-				spotify_uri: tracks[0].uri,
-			});
-			console.log(tracks[0].uri)
+        play({
+          playerInstance: window.player,
+          spotify_uri: tracks[0].uri,
+        })
+
+        /* window.player.getCurrentState().then(state => {
+            if (!state) {
+                play({
+                  playerInstance: window.player,
+                  spotify_uri: tracks[i].uri,
+                })
+            }
+        }) */
     }
   }, [tracks]);
   return null;

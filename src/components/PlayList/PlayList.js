@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
+import React from "react";
 
 import classes from "./PlayList.module.css";
 import AlbumCover from "../../assets/images/album.jpg";
 import { Player } from "../PlayList/Player/player";
 
 const PlayList = ({ tracks = [] }) => {
-  const [avatar, setAvatar] = useState(tracks[0]);
+  //const [avatar, setAvatar] = useState(tracks[0]);
   //console.log(tracks)
   return (
     <div className={classes.PlayList}>
       <div className={classes.Left}>
         <div className={classes.Album}>
           <div>
-            <img src={AlbumCover} />
+            <img src={AlbumCover} alt='album cover'/>
           </div>
           <div>
             <h3>artist name</h3>
@@ -24,10 +25,7 @@ const PlayList = ({ tracks = [] }) => {
 
       <div className={classes.Right}>
         {tracks.map((track) => (
-          <img
-            key={track.album.images[0].url}
-            src={track.album.images[0].url}
-          />
+          <img key={track.album.images[0].url} src={track.album.images[0].url} alt='album artwork' />
         ))}
       </div>
     </div>
