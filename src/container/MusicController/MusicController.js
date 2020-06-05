@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
-// import axios from "axios-orders";
+import React, { useEffect, useState } from "react"
 
-import Search from "../../components/Search/Search";
-import PlayList from "../../components/Player/PlayList"
+import { Search } from "../../components/Search/Search"
+import { Player } from "../../components/Player/Player/player"
 
 const MusicController = (props) => {
 
   const [trackData, setTrackData] = useState([])
   const [country, setCountry] = useState(null)
-  //const [tracks, setTracks] = useState(null)
 
   const { spotify } = props
-  //[] destructuring an array
-  // {} destructuring an object
-  // const state = useState(null);
-  // const data = state[0];
-  // const setData = state[1];
 
   useEffect(() => {
 
@@ -33,7 +26,7 @@ const MusicController = (props) => {
   return (
     <>
       <Search onResult={setCountry} />
-      <PlayList tracks={trackData} spotify={spotify} />
+      <Player tracks={trackData} spotify={spotify} />
     </>
   );
 };
