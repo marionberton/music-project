@@ -1,24 +1,44 @@
 //import React, { useState } from "react";
-import React from "react";
+import React from "react"
+import { useEffect, useState } from "react"
 
 import classes from "./PlayList.module.css";
-import AlbumCover from "../../assets/images/album.jpg";
 import { Player } from "../Player/Player/player";
 
 const PlayList = ( props ) => {
   //const [avatar, setAvatar] = useState(tracks[0]);
   const { tracks, spotify } = props
+  const [artist, setArtist] = useState("")
+  const [song, setSong] = useState("")
+  const [cover, setCover] = useState("")
+
+  useEffect(() => {
+
+      setTimeout( function() {
+          spotify.getMyCurrentPlayingTrack( function ( err, data ) {
+              if (err) {
+                  console.error(err)
+              } else {
+
+                  console.log(data)
+                  setArtist(data.item.artists[0].name)
+                  setSong(data.item.album.name)
+                  setCover(data.item.album.images[0].url)
+              }
+         })
+     }, 3000)
+  })
 
   return (
     <div className={classes.PlayList}>
       <div className={classes.Left}>
-        <div className={classes.Album}>
+        <div className={classes.Cover}>
           <div>
-            <img src={AlbumCover} alt='album cover'/>
+            <img src={cover} alt='album cover'/>
           </div>
           <div>
-            <h3>artist name</h3>
-            <p>song title</p>
+            <h3>{artist}</h3>
+            <p>{song}</p>
           </div>
         </div>
         <Player tracks={tracks} spotify={spotify} />
