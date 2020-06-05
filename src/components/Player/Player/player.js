@@ -1,5 +1,5 @@
 import React from "react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import classes from "./PlayList.module.css";
 
 export const Player = ( props ) => {
@@ -9,6 +9,31 @@ export const Player = ( props ) => {
   const [artist, setArtist] = useState("")
   const [song, setSong] = useState("")
   const [cover, setCover] = useState("")
+
+  const getCurrent = useCallback(
+
+      () => {
+          spotify.getMyCurrentPlayingTrack( function ( err, data ) {
+              if (err) {
+                  console.error(err)
+              } else {
+
+                  // Ensure the current track has started streaming
+                  setTimeout( function() {
+                      spotify.getMyCurrentPlayingTrack( function ( err, data ) {
+                          if (err) {
+                              console.error(err)
+                          } else {
+
+                              setArtist(data.item.artists[0].name)
+                              setSong(data.item.album.name)
+                              setCover(data.item.album.images[0].url)
+                          }
+                     })
+                 }, 3000)
+              }
+         })
+     },[spotify],)
 
   useEffect(() => {
 
@@ -30,34 +55,14 @@ export const Player = ( props ) => {
                            if (err) {
                                console.error(err)
                            } else {
-
-                               spotify.getMyCurrentPlayingTrack( function ( err, data ) {
-                                   if (err) {
-                                       console.error(err)
-                                   } else {
-
-                                       // Ensure the current track has started streaming
-                                       setTimeout( function() {
-                                           spotify.getMyCurrentPlayingTrack( function ( err, data ) {
-                                               if (err) {
-                                                   console.error(err)
-                                               } else {
-
-                                                   setArtist(data.item.artists[0].name)
-                                                   setSong(data.item.album.name)
-                                                   setCover(data.item.album.images[0].url)
-                                               }
-                                          })
-                                      }, 3000)
-                                   }
-                              })
+                               setInterval(()=> getCurrent(), 3000)
                            }
                        })
                   }
               }
          })
      }
-  }, [spotify, tracks])
+ }, [spotify, tracks, getCurrent])
 
   return (
     <div className={classes.PlayList}>
