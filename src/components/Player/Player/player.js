@@ -19,36 +19,41 @@ export const Player = ( props ) => {
                   console.error(err)
               } else {
 
-                  const uris = tracks.map( ( track ) => {
-                     return track.uri
-                  })
+                  // check the user is logged into spotify
+                  if (data.devices.length) {
 
-                 spotify.play({device_id: data.devices[0].id, uris: uris}, function ( err, data ) {
-                      if (err) {
-                          console.error(err)
-                      } else {
-                          spotify.getMyCurrentPlayingTrack( function ( err, data ) {
-                              if (err) {
-                                  console.error(err)
-                              } else {
+                      const uris = tracks.map( ( track ) => {
+                         return track.uri
+                      })
 
-                                  setTimeout( function() {
-                                      spotify.getMyCurrentPlayingTrack( function ( err, data ) {
-                                          if (err) {
-                                              console.error(err)
-                                          } else {
+                      spotify.play({device_id: data.devices[0].id, uris: uris}, function ( err, data ) {
+                           if (err) {
+                               console.error(err)
+                           } else {
 
-                                              console.log(data)
-                                              setArtist(data.item.artists[0].name)
-                                              setSong(data.item.album.name)
-                                              setCover(data.item.album.images[0].url)
-                                          }
-                                     })
-                                 }, 3000)
-                              }
-                         })
-                      }
-                  })
+                               spotify.getMyCurrentPlayingTrack( function ( err, data ) {
+                                   if (err) {
+                                       console.error(err)
+                                   } else {
+
+                                       // Ensure the current track has started streaming
+                                       setTimeout( function() {
+                                           spotify.getMyCurrentPlayingTrack( function ( err, data ) {
+                                               if (err) {
+                                                   console.error(err)
+                                               } else {
+
+                                                   setArtist(data.item.artists[0].name)
+                                                   setSong(data.item.album.name)
+                                                   setCover(data.item.album.images[0].url)
+                                               }
+                                          })
+                                      }, 3000)
+                                   }
+                              })
+                           }
+                       })
+                  }
               }
          })
      }
