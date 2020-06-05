@@ -16,7 +16,7 @@ const Search = props => {
       onResult(country);
     }
 
-}, [country, onResult]);
+  },[country, onResult]);
 
   const findCountry = name => {
     setCountry(

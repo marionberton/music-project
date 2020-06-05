@@ -3,11 +3,12 @@ import React from "react";
 
 import classes from "./PlayList.module.css";
 import AlbumCover from "../../assets/images/album.jpg";
-import { Player } from "../PlayList/Player/player";
+import { Player } from "../Player/Player/player";
 
-const PlayList = ({ tracks = [] }) => {
+const PlayList = ( props ) => {
   //const [avatar, setAvatar] = useState(tracks[0]);
-  //console.log(tracks)
+  const { tracks, spotify } = props
+
   return (
     <div className={classes.PlayList}>
       <div className={classes.Left}>
@@ -20,16 +21,21 @@ const PlayList = ({ tracks = [] }) => {
             <p>song title</p>
           </div>
         </div>
-        <Player tracks={tracks} />
+        <Player tracks={tracks} spotify={spotify} />
       </div>
-
       <div className={classes.Right}>
-        {tracks.map((track) => (
-          <img key={track.album.images[0].url} src={track.album.images[0].url} alt='album artwork' />
-        ))}
+
+           {tracks.map( (track ) => (
+             <img key={track.album.images[0].url} src={track.album.images[0].url} alt='album artwork' />
+           ))}
+
       </div>
     </div>
   );
 };
 
 export default PlayList;
+
+/*
+
+*/
