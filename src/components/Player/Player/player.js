@@ -13,27 +13,24 @@ export const Player = ( props ) => {
   const getCurrent = useCallback(
 
       () => {
+
           spotify.getMyCurrentPlayingTrack( function ( err, data ) {
               if (err) {
                   console.error(err)
               } else {
 
-                  // Ensure the current track has started streaming
-                  setTimeout( function() {
-                      spotify.getMyCurrentPlayingTrack( function ( err, data ) {
-                          if (err) {
-                              console.error(err)
-                          } else {
+                // make sure we do the 'sets' safely...
+                if ( data.hasOwnProperty('item') ) {
 
-                              setArtist(data.item.artists[0].name)
-                              setSong(data.item.album.name)
-                              setCover(data.item.album.images[0].url)
-                          }
-                     })
-                 }, 3000)
+                  setArtist(data.item.artists[0].name)
+                  setSong(data.item.album.name)
+                  setCover(data.item.album.images[0].url)
+
+                }
               }
-         })
-     },[spotify],)
+          })
+
+  },[spotify],)
 
   useEffect(() => {
 
@@ -55,7 +52,7 @@ export const Player = ( props ) => {
                            if (err) {
                                console.error(err)
                            } else {
-                               setInterval(()=> getCurrent(), 3000)
+                               setInterval(()=> getCurrent(), 1000)
                            }
                        })
                   }
