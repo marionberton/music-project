@@ -13,7 +13,7 @@
   flex: 1 1 0;
   background-color: white;
   height: 100%;
-  
+
 }
 
 .Album {
@@ -43,7 +43,7 @@ margin: 0;
 
 .Album p {
 margin: 0;
-} 
+}
 
 .Right {
   display: flex;
@@ -55,6 +55,41 @@ margin: 0;
 }
 
 .Right img {
+  border-radius: 50%;
+  width: 80px;
+  height: auto;
+  margin: 5px;
+}
+
+.Cover {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.Cover h3 {
+    margin: 0;
+}
+
+.Cover p {
+    margin: 0;
+}
+
+.Cover img {
+  border-radius: 50%;
+  width: 80px;
+  height: auto;
+  margin: 5px;
+}
+
+.Cover div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.Cover img {
   border-radius: 50%;
   width: 80px;
   height: auto;

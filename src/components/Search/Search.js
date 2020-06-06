@@ -5,7 +5,7 @@ import Globe from "../Globe/Globe";
 
 import WorldMap from "../../Data/world-low-res.json";
 
-const Search = props => {
+export const Search = props => {
   const { onResult } = props;
 
   const [country, setCountry] = useState(null);
@@ -15,8 +15,8 @@ const Search = props => {
     if(country !== null) {
       onResult(country);
     }
-    
-  }, [country]);
+
+  },[country, onResult]);
 
   const findCountry = name => {
     setCountry(
@@ -53,7 +53,5 @@ const Search = props => {
       </div>
       <Globe country={country} onClick={clickHandler} />
     </div>
-  );
-};
-
-export default Search;
+  )
+}
