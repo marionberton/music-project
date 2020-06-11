@@ -3,7 +3,7 @@ import * as SpotifyWebApi from 'spotify-web-api-js';
 export const getSpotify = () => {
 
     let spotify = new SpotifyWebApi()
-    spotify.setAccessToken('BQBRbJCj_GQAiN9g4y8DmkHpAe9A8azSzMmrsvLtzLnbA6oDN59fu9VYueg_B2I7M1Gl3cuiB4ov3RIZPlLNwpcoD-y48PGLrR8NfL0nndKUjMKSuApZHAyoBtc21VkLUlEBIuyCwcYIy2eAQhjypRDoqWCyjqe31blfP3wR-2DJFSJ5UqDCQzUL2l2hxhUZoHwI8Ec1JmoU5DR921-2F0DzYk9LdfmMioKFoBULzEKUebOjnptgacbBaDYg8dNLDd42e7bGjPrv2bXt')
+    spotify.setAccessToken('BQDm-OJsUXuy5-HCwww2cpI7Eq-OuPQk3CQYuU0XLIA4kJ-oNdjslX53xtE6_A-hY-9uqYeRq7oqPl7Y3KPTNpHq_oa3mSzvPwDX7ad6nS80a01q9ObTxzm_3BQs9EEdNnne45f5ZwB1WSvqZHzBQy0lYO9X4FEOPfGqi_VKxJt-HDX1zIlAV70l1UVA-3DaoDispzfvmsQ-Q-uDMBlhBPZmDBa8ki-wCLJql-xPkz19ChW4I3Op-3c-FRLI_Z0ys96IwNlDwnMcRO0m')
 
     return spotify
 }
