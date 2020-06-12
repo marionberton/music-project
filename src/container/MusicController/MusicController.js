@@ -1,27 +1,36 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 
-import { Search } from "../../components/Search/Search"
-import { Player } from "../../components/Player/Player/player"
+import { Search } from "../../components/Search/Search";
+import { Player } from "../../components/Player/Player/player";
+import { getRandom } from "../../util/util";
 
 const MusicController = (props) => {
+  const [trackData, setTrackData] = useState([]);
+  const [country, setCountry] = useState(null);
 
-  const [trackData, setTrackData] = useState([])
-  const [country, setCountry] = useState(null)
-
-  const { spotify } = props
+  const { spotify } = props;
 
   useEffect(() => {
+    if (country !== null) {
+      const maxTracks = 1995;
+      const trackLimit = 5;
+      const random = getRandom(0, maxTracks);
 
-      if (country !== null) {
-          spotify.searchTracks(`${country.name}`, { limit: 5 }, function ( err, data ) {
-              if (err) {
-                  console.error(err)
-              } else {
-                  setTrackData(data.tracks.items)
-              }
-          })
-      }
-  }, [spotify, country])
+      console.log('track offset', random);
+      
+      spotify.searchTracks(
+        `${country.name}`,
+        { limit: trackLimit, offset: random },
+        function (err, data) {
+          if (err) {
+            console.error(err);
+          } else {
+            setTrackData(data.tracks.items);
+          }
+        }
+      );
+    }
+  }, [spotify, country]);
 
   return (
     <>
