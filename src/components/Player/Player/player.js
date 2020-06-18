@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState, useCallback } from "react";
 import classes from "./PlayList.module.css";
 import { getRandom } from "../../../util/util";
+
 export const Player = (props) => {
   const { tracks, spotify } = props;
 
@@ -17,7 +18,7 @@ export const Player = (props) => {
         // make sure we do the 'sets' safely...
         if (data.hasOwnProperty("item")) {
           setArtist(data.item.artists[0].name);
-          setSong(data.item.album.name);
+          setSong(data.item.name);
           setCover(data.item.album.images[0].url);
         }
       }

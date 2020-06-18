@@ -2,20 +2,23 @@ import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
-import { getSpotify } from './components/Player/spotify'
+import { getSpotify } from "./components/Player/spotify";
 import MusicController from "./container/MusicController/MusicController";
-import About from "./components/About/About";
+import { Signin } from "./components/signin/Signin";
 
-const App = props => {
-
-  const spotify = getSpotify()
+const App = (props) => {
+  const spotify = getSpotify();
 
   return (
     <div className="App">
       <Layout>
         <Switch>
-          <Route exact path="/" render={() => <MusicController spotify={spotify}/>} />
-          <Route path="/about" component={About} />
+          <Route
+            exact
+            path="/"
+            render={() => <MusicController spotify={spotify} />}
+          />
+          <Route path="/signin" render={() => <Signin spotify={spotify} />} />
         </Switch>
       </Layout>
     </div>
