@@ -3,27 +3,40 @@ import React, { useEffect, useState } from "react";
 import { Search } from "../../components/Search/Search";
 import { Player } from "../../components/Player/Player/player";
 import { getRandom } from "../../util/util";
+import { getHashParams } from "../../util/util";
+import { Signin } from "../../components/signin/Signin";
 
 const MusicController = (props) => {
   const [trackData, setTrackData] = useState([]);
   const [country, setCountry] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const { spotify } = props;
 
   useEffect(() => {
+    const params = getHashParams();
+    console.log(params);
+    const token = params.access_token;
+    console.log("TOKEN", token);
+    if (token) {
+      spotify.setAccessToken(token);
+      setLoggedIn(true);
+    }
+
     if (country !== null) {
       const maxTracks = 1995;
       const trackLimit = 5;
       const random = getRandom(0, maxTracks);
 
-      console.log('track offset', random);
-      
+      console.log("track offset", random);
+
       spotify.searchTracks(
         `${country.name}`,
         { limit: trackLimit, offset: random },
         function (err, data) {
           if (err) {
             console.error(err);
+            setLoggedIn(false);
           } else {
             setTrackData(data.tracks.items);
           }
@@ -34,8 +47,14 @@ const MusicController = (props) => {
 
   return (
     <>
-      <Search onResult={setCountry} />
-      <Player tracks={trackData} spotify={spotify} />
+      {loggedIn ? (
+        <>
+          <Search onResult={setCountry} />
+          <Player tracks={trackData} spotify={spotify} />
+        </>
+      ) : (
+        <Signin />
+      )}
     </>
   );
 };
