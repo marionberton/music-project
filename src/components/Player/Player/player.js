@@ -57,9 +57,7 @@ export const Player = (props) => {
     <div className={classes.PlayList}>
       <div className={classes.Left}>
         <div className={classes.Cover}>
-          <div>
-            <img src={cover} alt="album cover" />
-          </div>
+          <div>{cover ? <img src={cover} alt="album cover" /> : null}</div>
           <div>
             <h3>{artist}</h3>
             <p>{song}</p>
@@ -72,11 +70,13 @@ export const Player = (props) => {
           const random = getRandom(0, maxRandom);
           console.log(track);
           return (
-            <img
-              key={random}
-              src={track.album.images[0].url}
-              alt="album artwork"
-            />
+            <div className={classes.Cover}>
+              <img
+                key={random}
+                src={track.album.images[0].url}
+                alt="album artwork"
+              />
+            </div>
           );
         })}
       </div>

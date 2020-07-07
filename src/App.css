@@ -1,16 +1,15 @@
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-  font-family: Helvetica, Arial, sans-serif;
-  
-}
-
 #root {
   position: relative;
   min-height: 100vh;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100%;
 }
 
 .App {

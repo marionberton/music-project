@@ -1,5 +1,6 @@
 import React from "react";
 
+import classes from "./Signin.module.css";
 
 export const Signin = (props) => {
   
@@ -22,7 +23,7 @@ export const Signin = (props) => {
   // }
 
   return (
-    <div className="App">
+    <div className={classes.Signin}>
       <a href="http://localhost:8888"> Login to Spotify </a>
     </div>
   );

@@ -1,23 +1,22 @@
 .Search {
   flex: 1 1 0;
-  background-color: #F0F3F8;
+  background-color: #f0f3f8;
   display: flex;
-	flex-direction: column;
-	text-align: center;
-	align-items: center;
-
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .Search h1 {
-	color: rgb(247, 152, 87);
-	margin-top: 30px;
-	margin-bottom: 0px;
+  color: rgb(247, 152, 87);
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .Search p {
-	color: #616161;
-	margin-top: 10px;
-	margin-bottom: 43px;
+  color: #616161;
+  margin-top: 10px;
+  margin-bottom: 13px;
 }
 
 .SearchItem {
@@ -31,8 +30,10 @@
   background-position: 2% 50%;
   padding: 10px 0 10px 30px;
   width: 100%;
-	border-radius: 25px;
-	outline: none;
-    background-color: white;
-    border: none;
+  border-radius: 25px;
+  outline: none;
+  background-color: white;
+  border: none;
 }
+
+

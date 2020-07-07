@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 import { VectorMap } from "@south-paw/react-vector-maps";
-
+import classes from "./Globe.module.css";
 import WorldMap from "../../Data/world-low-res.json";
 
 /*  
@@ -37,6 +37,7 @@ const StyledDiv = styled.div`
   svg {
     stroke: #fff;
     margin: 25px 40px;
+    width: 50%;
 
     // All layers are just path elements
     path {
@@ -73,7 +74,7 @@ const Globe = (props) => {
   };
 
   return (
-    <StyledDiv>
+    <StyledDiv className={classes.Globe} >
       <VectorMap
         currentLayers={countries}
         layerProps={layerProps}

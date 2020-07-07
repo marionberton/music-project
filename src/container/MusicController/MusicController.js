@@ -6,6 +6,8 @@ import { getRandom } from "../../util/util";
 import { getHashParams } from "../../util/util";
 import { Signin } from "../../components/signin/Signin";
 
+import  classes from  './MusicController.module.css'
+
 const MusicController = (props) => {
   const [trackData, setTrackData] = useState([]);
   const [country, setCountry] = useState(null);
@@ -14,6 +16,7 @@ const MusicController = (props) => {
   const { spotify } = props;
 
   useEffect(() => {
+    //for spotify Signin
     const params = getHashParams();
     console.log(params);
     const token = params.access_token;
@@ -29,7 +32,7 @@ const MusicController = (props) => {
       const random = getRandom(0, maxTracks);
 
       console.log("track offset", random);
-
+      // Fetching API
       spotify.searchTracks(
         `${country.name}`,
         { limit: trackLimit, offset: random },
@@ -49,8 +52,11 @@ const MusicController = (props) => {
     <>
       {loggedIn ? (
         <>
-          <Search onResult={setCountry} />
-          <Player tracks={trackData} spotify={spotify} />
+          <div className={classes.Music}> 
+            <Search onResult={setCountry} />
+         
+            <Player tracks={trackData} spotify={spotify} />
+          </div>
         </>
       ) : (
         <Signin />
@@ -58,12 +64,6 @@ const MusicController = (props) => {
     </>
   );
 };
-
-// componentDidMount() {
-//   axios
-//   .get('https://api.soundcloud.com/tracks/13158665?client_id=PlZuraHdl9926OYs9P9TdcEHyEXIYeag')
-
-// }
 
 export default MusicController;
 

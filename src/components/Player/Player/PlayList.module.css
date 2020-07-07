@@ -1,5 +1,5 @@
 .PlayList {
-  height: 68px;
+  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -13,36 +13,7 @@
   flex: 1 1 0;
   background-color: white;
   height: 100%;
-
-}
-
-.Album {
-	flex: 1 1 0;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-
-}
-
-
-.Album div:first-of-type {
-
-	margin-left: 32px;
-}
-
-.Album div {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	margin-left: 17px;
-}
-
-.Album h3 {
-margin: 0;
-}
-
-.Album p {
-margin: 0;
+  padding: 10px;
 }
 
 .Right {
@@ -54,7 +25,7 @@ margin: 0;
   padding: 10px;
 }
 
-.Right img {
+.Album {
   border-radius: 50%;
   width: 80px;
   height: auto;
@@ -62,17 +33,17 @@ margin: 0;
 }
 
 .Cover {
-    display: flex;
-    flex-direction: row;
-    margin: 5px;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
 }
 
 .Cover h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .Cover p {
-    margin: 0;
+  margin: 0;
 }
 
 .Cover img {
@@ -83,17 +54,10 @@ margin: 0;
 }
 
 .Cover div {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-left: 5px;
-}
-
-.Cover img {
-  border-radius: 50%;
-  width: 80px;
-  height: auto;
-  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 5px;
 }
 
 @media (max-width: 768px) {

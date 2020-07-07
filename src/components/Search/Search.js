@@ -5,31 +5,30 @@ import Globe from "../Globe/Globe";
 
 import WorldMap from "../../Data/world-low-res.json";
 
-export const Search = props => {
+export const Search = (props) => {
   const { onResult } = props;
 
   const [country, setCountry] = useState(null);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    if(country !== null) {
+    if (country !== null) {
       onResult(country);
     }
+  }, [country, onResult]);
 
-  },[country, onResult]);
-
-  const findCountry = name => {
+  const findCountry = (name) => {
     setCountry(
-      WorldMap.layers.find(country => {
+      WorldMap.layers.find((country) => {
         //return country.name.toLowerCase() == name.toLowerCase();
         return country.name.toLowerCase().indexOf(name.toLowerCase()) >= 0;
       })
     );
   };
 
-  const clickHandler = name => {
+  const clickHandler = (name) => {
     setCountry(
-      WorldMap.layers.find(country => {
+      WorldMap.layers.find((country) => {
         return country.name === name;
       })
     );
@@ -42,7 +41,7 @@ export const Search = props => {
       <p>Search to Discover New Music</p>
       <div className={classes.SearchItem}>
         <input
-          onChange={event => {
+          onChange={(event) => {
             findCountry(event.target.value);
             setSearchInput(event.target.value);
           }}
@@ -51,7 +50,8 @@ export const Search = props => {
           value={searchInput}
         />
       </div>
+
       <Globe country={country} onClick={clickHandler} />
     </div>
-  )
-}
+  );
+};
