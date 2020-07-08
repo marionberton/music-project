@@ -1,5 +1,5 @@
 .PlayList {
-  height: 100px;
+  height: 70px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -32,23 +32,38 @@
   margin: 5px;
 }
 
-.Cover {
+.MainCover {
   display: flex;
   flex-direction: row;
   margin: 5px;
 }
 
-.Cover h3 {
-  margin: 0;
+.Cover {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  
+}
+.MainCover img {
+  width: 60px;
+  height: auto;
+  margin: 5px;
+  align-self: center;
 }
 
-.Cover p {
+.MainCover h3 {
   margin: 0;
+  vertical-align: middle;
+}
+
+.MainCover p {
+  margin: 0;
+  vertical-align: middle;
 }
 
 .Cover img {
   border-radius: 50%;
-  width: 80px;
+  width: 60px;
   height: auto;
   margin: 5px;
 }
@@ -58,6 +73,17 @@
   flex-direction: column;
   text-align: center;
   margin-left: 5px;
+}
+
+.Progress {
+  border: 0.15em solid #eee;
+  height: 1em;
+}
+
+.Progress_bar {
+  background-color: #eee;
+  border: 0.1em solid transparent;
+  height: 0.75em;
 }
 
 @media (max-width: 768px) {

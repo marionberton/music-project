@@ -8,3 +8,5 @@ export const getSpotify = () => {
 
   return spotify;
 };
+
+// var redirect_uri = "http://localhost:8888/callback"; // Your redirect uri

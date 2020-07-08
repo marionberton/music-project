@@ -38,7 +38,7 @@ export const Search = (props) => {
   return (
     <div className={classes.Search}>
       <h1>Discovery Map</h1>
-      <p>Search to Discover New Music</p>
+      <p>Search by country to discover new music</p>
       <div className={classes.SearchItem}>
         <input
           onChange={(event) => {

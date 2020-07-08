@@ -8,7 +8,6 @@ import { Signin } from "./components/signin/Signin";
 
 const App = (props) => {
   const spotify = getSpotify();
-
   return (
     <div className="App">
       <Layout>
@@ -18,7 +17,7 @@ const App = (props) => {
             path="/"
             render={() => <MusicController spotify={spotify} />}
           />
-          <Route path="/signin" render={() => <Signin spotify={spotify} />} />
+          {/* <Route path="/signin" render={() => <Signin spotify={spotify} />} /> */}
         </Switch>
       </Layout>
     </div>
