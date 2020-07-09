@@ -38,7 +38,7 @@ const StyledDiv = styled.div`
     stroke: #b8b8b8;
     margin: 25px 40px;
     width: 50%;
-    filter: drop-shadow(6px 6px 3px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
 
     // All layers are just path elements
     path {

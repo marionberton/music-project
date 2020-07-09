@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
+
 import classes from "./PlayList.module.css";
-import { getRandom } from "../../../util/util";
+import Tracks from "./tracks";
 
 export const Player = (props) => {
   const { tracks, spotify } = props;
@@ -9,10 +10,45 @@ export const Player = (props) => {
   const [artist, setArtist] = useState("");
   const [song, setSong] = useState("");
   const [cover, setCover] = useState("");
-  // const [bar, setBar] = useState("");
-  // const [progress, setProgress] = useState(null);
+  const [duration, setDuration] = useState(null);
+  const [progress, setProgress] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const clickHandler = () => {
+    //check if it s playing or not
+    spotify.getMyDevices(function (err, data) {
+      if (err) {
+        console.error(err);
+      } else {
+        // check the user is logged into spotify
+        if (data.devices.length) {
+          if (isPlaying) {
+            spotify.pause({ device_id: data.devices[0].id }, function (
+              err,
+              data
+            ) {
+              if (err) {
+                console.error(err);
+              } else {
+                setIsPlaying(true);
+              }
+            });
+          } else {
+            spotify.play({ device_id: data.devices[0].id }, function (
+              err,
+              data
+            ) {
+              if (err) {
+                console.error(err);
+              } else {
+                setIsPlaying(false);
+              }
+            });
+          }
+        }
+      }
+    });
+  };
   const getCurrent = useCallback(() => {
     spotify.getMyCurrentPlayingTrack(function (err, data) {
       if (err) {
@@ -20,13 +56,13 @@ export const Player = (props) => {
       } else {
         // make sure we do the 'sets' safely...
         if (data.hasOwnProperty("item")) {
-          console.log("hasProperty", data.hasOwnProperty("item"));
           setArtist(data.item.artists[0].name);
-          console.log(setArtist(data.item.artists[0].name));
+
           setSong(data.item.name);
           setCover(data.item.album.images[0].url);
-          // setBar(data.item.duration_ms);
-          // console.log(setBar(data.item.duration_ms));
+          setIsPlaying(data.is_playing);
+          setDuration(data.item.duration_ms);
+          setProgress(data.progress_ms);
         }
       }
     });
@@ -34,19 +70,16 @@ export const Player = (props) => {
 
   useEffect(() => {
     if (tracks.length) {
-      console.log("TRACKS:", tracks.length);
       spotify.getMyDevices(function (err, data) {
         if (err) {
           console.error(err);
         } else {
           // check the user is logged into spotify
           if (data.devices.length) {
-            console.log("DEVICE", data.devices.length);
             const uris = tracks.map((track) => {
-              console.log("URI", track.uri);
               return track.uri;
             });
-            console.log("URIS", uris);
+
             spotify.play(
               {
                 device_id: data.devices[0].id,
@@ -90,32 +123,22 @@ export const Player = (props) => {
           </div>
         </div>
         <div>
-          {/* <div>{isPlaying ? "Playing" : "Paused"}</div> */}
-          {/* <div className={classes.Progress}>
-            <div
+          <div>
+            <button onClick={clickHandler}>
+              {isPlaying ? "pause" : "play"}
+            </button>
+          </div>
+          <div className={classes.Progress}>
+            <progress
+              max={duration}
+              value={progress}
               className={classes.Progress_bar}
-              style={{
-                width: ({setProgress} * 100) / setBar,
-              }}
-            ></div>
-          </div>  */}
+            ></progress>
+          </div>
         </div>
       </div>
       <div className={classes.Right}>
-        {tracks.map((track) => {
-          const maxRandom = 1000000;
-          const random = getRandom(0, maxRandom);
-          console.log(track);
-          return (
-            <div className={classes.Cover}>
-              <img
-                key={random}
-                src={track.album.images[0].url}
-                alt="album artwork"
-              />
-            </div>
-          );
-        })}
+        <Tracks tracks={tracks} />
       </div>
     </div>
   );
