@@ -43,6 +43,7 @@ const MusicController = (props) => {
             setLoggedIn(false);
           } else {
             setTrackData(data.tracks.items);
+            console.log('Country',country.name);
           }
         }
       );

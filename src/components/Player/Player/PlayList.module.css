@@ -42,7 +42,6 @@
   display: flex;
   flex-direction: row;
   margin: 5px;
-  
 }
 .MainCover img {
   width: 60px;
@@ -75,15 +74,33 @@
   margin-left: 5px;
 }
 
-.Progress {
-  border: 0.15em solid #eee;
-  height: 1em;
+progress::-webkit-progress-bar { background-color: #fff; }
+progress::-webkit-progress-value {
+  background-color: orange !important;
 }
+/* progress {
+  -webkit-appearance: none;
+  border-radius: 25px;
+}
+::-webkit-progress-value {
+   background-color: orange;
+   border-radius: 25px;
+}  */
 
-.Progress_bar {
+/* .Progress_bar {
   background-color: black;
   border: 0.1em solid transparent;
   height: 0.75em;
+} */
+
+.Player{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Player div {
+  margin: 0 5px;
 }
 
 @media (max-width: 768px) {

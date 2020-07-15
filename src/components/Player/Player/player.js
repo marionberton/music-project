@@ -1,5 +1,11 @@
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlayCircle,
+  faPauseCircle,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./PlayList.module.css";
 import Tracks from "./tracks";
@@ -13,6 +19,7 @@ export const Player = (props) => {
   const [duration, setDuration] = useState(null);
   const [progress, setProgress] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [addTrack, setAddTracks] = useState(false);
 
   const clickHandler = () => {
     //check if it s playing or not
@@ -49,6 +56,25 @@ export const Player = (props) => {
       }
     });
   };
+
+  const saveTrack = () => {
+    spotify.getMySavedTracks(function (err, data) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("SAVED tracks Button", data.items);
+        spotify.addToMySavedTracks(function (trackId, err, data) {
+          if (err) {
+            console.error(err);
+          } else {
+            setAddTracks(true);
+            console.log("DATA Button", data);
+          }
+        });
+      }
+    });
+  };
+
   const getCurrent = useCallback(() => {
     spotify.getMyCurrentPlayingTrack(function (err, data) {
       if (err) {
@@ -57,12 +83,13 @@ export const Player = (props) => {
         // make sure we do the 'sets' safely...
         if (data.hasOwnProperty("item")) {
           setArtist(data.item.artists[0].name);
-
           setSong(data.item.name);
           setCover(data.item.album.images[0].url);
           setIsPlaying(data.is_playing);
+          // setAddTracks(data.item.id);
           setDuration(data.item.duration_ms);
           setProgress(data.progress_ms);
+          console.log("Current", data.item.id);
         }
       }
     });
@@ -70,6 +97,7 @@ export const Player = (props) => {
 
   useEffect(() => {
     if (tracks.length) {
+      console.log(tracks.length);
       spotify.getMyDevices(function (err, data) {
         if (err) {
           console.error(err);
@@ -77,9 +105,10 @@ export const Player = (props) => {
           // check the user is logged into spotify
           if (data.devices.length) {
             const uris = tracks.map((track) => {
+              console.log("Uri", track.uri);
               return track.uri;
             });
-
+            console.log("Uris", uris);
             spotify.play(
               {
                 device_id: data.devices[0].id,
@@ -101,6 +130,32 @@ export const Player = (props) => {
         }
       });
     }
+    //if (tracks) {
+    console.log("Tracks", tracks);
+    const ids = tracks.map((track) => {
+      return track.id;
+    });
+    spotify.getMySavedTracks(function (err, data) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("SAVED tracks", data.items);
+
+        spotify.addToMySavedTracks({ ids: ids }, function (err, data) {
+          if (err) {
+            console.error(err);
+          } else {
+            // if (ids === data.items.tracks.id) {
+            //   console.log("saved to tracks", ids, data.items[0].track.id);
+            // }
+
+            // setInterval(() => getCurrent(), 1000);
+            console.log("DATA", data);
+          }
+        });
+      }
+    });
+    //}
   }, [spotify, tracks, getCurrent]);
 
   return (
@@ -122,23 +177,33 @@ export const Player = (props) => {
             <p>{song}</p>
           </div>
         </div>
-        <div>
-          <div>
-            <button onClick={clickHandler}>
-              {isPlaying ? "pause" : "play"}
-            </button>
+
+        <div className={classes.Player}>
+          <div onClick={saveTrack}>
+            <FontAwesomeIcon icon={faHeart} />
+            {/* <button onClick={saveTrack}>Save</button> */}
           </div>
-          <div className={classes.Progress}>
-            <progress
-              max={duration}
-              value={progress}
-              className={classes.Progress_bar}
-            ></progress>
+          <div>
+            <div onClick={clickHandler}>
+              {isPlaying ? (
+                <FontAwesomeIcon
+                  icon={faPauseCircle}
+                  color="orange"
+                  size="2x"
+                />
+              ) : (
+                <FontAwesomeIcon icon={faPlayCircle} color="orange" size="2x" />
+              )}
+            </div>
+          </div>
+
+          <div>
+            <progress max={duration} value={progress}></progress>
           </div>
         </div>
       </div>
       <div className={classes.Right}>
-        <Tracks tracks={tracks} />
+        <Tracks key={tracks.id} tracks={tracks} />
       </div>
     </div>
   );
