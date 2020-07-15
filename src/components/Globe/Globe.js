@@ -35,19 +35,20 @@ const StyledDiv = styled.div`
   width: 100%;
 
   svg {
-    stroke: #fff;
+    stroke: #b8b8b8;
     margin: 25px 40px;
     width: 50%;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
 
     // All layers are just path elements
     path {
-      fill: #cccccc;
+      fill: white;
       cursor: pointer;
       outline: none;
 
       // When a layer is hovered
       &:hover {
-        fill: rgb(247, 152, 87, 0.83);
+        fill: rgb(165, 157, 230, 0.83);
       }
 
       // When a layer is focused.

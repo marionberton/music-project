@@ -5,17 +5,20 @@ import Logo from "../../Logo/Logo";
 import Button from "../../UI/Button/Button";
 import NavigationItems from "../NavigationItems/NavigationItems";
 
-const toolbar = props => (
+const Toolbar = (props) => (
   <header className={classes.Toolbar}>
     <Logo />
     <nav>
       <NavigationItems />
-      <Button selected="Selected">Join the Beta</Button>
+      {/* <Button selected="Selected">Join the Beta</Button> */}
+      <a href="http://localhost:8888" role="button" className={classes.Button}>
+        Signin with Spotify
+      </a>
     </nav>
   </header>
 );
 
-export default toolbar;
+export default Toolbar;
 
 // <Button onClick={props.onClick}>Home</Button>
 // <Button onClick={props.onClick}>Log in</Button>

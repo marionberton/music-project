@@ -1,6 +1,6 @@
 .Search {
   flex: 1 1 0;
-  background-color: #f0f3f8;
+  background-color: #f2f6fa;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -26,7 +26,7 @@
 }
 
 .SearchItem input {
-  background: url(/static/media/search.c712303a.svg) no-repeat;
+  background: url("../../assets/images/search.svg") no-repeat;
   background-position: 2% 50%;
   padding: 10px 0 10px 30px;
   width: 100%;
@@ -34,6 +34,5 @@
   outline: none;
   background-color: white;
   border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
-

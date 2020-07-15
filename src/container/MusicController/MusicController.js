@@ -5,8 +5,9 @@ import { Player } from "../../components/Player/Player/player";
 import { getRandom } from "../../util/util";
 import { getHashParams } from "../../util/util";
 import { Signin } from "../../components/signin/Signin";
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 
-import  classes from  './MusicController.module.css'
+import classes from "./MusicController.module.css";
 
 const MusicController = (props) => {
   const [trackData, setTrackData] = useState([]);
@@ -52,14 +53,18 @@ const MusicController = (props) => {
     <>
       {loggedIn ? (
         <>
-          <div className={classes.Music}> 
+          <div className={classes.Music}>
             <Search onResult={setCountry} />
-         
+
             <Player tracks={trackData} spotify={spotify} />
           </div>
         </>
       ) : (
-        <Signin />
+        <section>
+          <div>
+            <h1>Please sign in with Spotify</h1>
+          </div>
+        </section>
       )}
     </>
   );
