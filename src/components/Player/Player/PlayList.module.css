@@ -74,7 +74,9 @@
   margin-left: 5px;
 }
 
-progress::-webkit-progress-bar { background-color: #fff; }
+progress::-webkit-progress-bar {
+  background-color: #fff;
+}
 progress::-webkit-progress-value {
   background-color: orange !important;
 }
@@ -93,8 +95,8 @@ progress::-webkit-progress-value {
   height: 0.75em;
 } */
 
-.Player{
-    display: flex;
+.Player {
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
