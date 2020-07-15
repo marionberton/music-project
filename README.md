@@ -1,68 +1,87 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Apala music discovery
 
-In the project directory, you can run:
+Apala is a website that amplify your Spotify and allow you to discover music from around the worl in one click.
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project status
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This project is still developement, user can login with their Spotify premium account. Users still need to have their spotify open to be able to access the music. They can now play and pause from the website, however the add to favorite tracks is still in progress.
 
-### `npm test`
+## Project screenshot
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![apala-screenshot](https://user-images.githubusercontent.com/29751174/87558844-7b65c680-c6b1-11ea-8e0c-ae9bec57eda4.png)
 
-### `npm run build`
+## Getting started
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1) Sign in your App on Spotify
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+a) Sign in https://developer.spotify.com/dashboard/
+b) Use http//localhost:8888/callback as the Redirect URI
+c) Make sure to copy your Client ID, Redirect Uri and Client Secret
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2) In web-api-auth
 
-### `npm run eject`
+a) Go to file authorization_code
+b) Replace the client_id, redirect_uri and client_secret with YOURS that your got on Spotify
+c) Run the server ``` cd authorization_code ``` ``` node app.js ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation and Setup Instructions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clone down this repository. You will need node and npm installed globally on your machine.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Installation: 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+``` npm install ```
 
-## Learn More
+To Start Server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+``` npm start ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Make sure you have your spotify web player open so you an play the music!
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Apala music discovery
 
-### Making a Progressive Web App
+Apala is a website that amplify your Spotify and allow you to discover music from around the worl in one click.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Project status
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+This project is still developement, user can login with their Spotify premium account. Users still need to have their spotify open to be able to access the music. They can now play and pause from the website, however the add to favorite tracks is still in progress.
 
-### Deployment
+## Project screenshot
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+![apala-screenshot](https://user-images.githubusercontent.com/29751174/87558844-7b65c680-c6b1-11ea-8e0c-ae9bec57eda4.png)
 
-### `npm run build` fails to minify
+## Getting started
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### 1) Sign in your App on Spotify
+
+a) Sign in https://developer.spotify.com/dashboard/
+b) Use http//localhost:8888/callback as the Redirect URI
+c) Make sure to copy your Client ID, Redirect Uri and Client Secret
+
+### 2) In web-api-auth
+
+a) Go to file authorization_code
+b) Replace the client_id, redirect_uri and client_secret with YOURS that your got on Spotify
+c) Run the server ``` cd authorization_code ``` ``` node app.js ```
+
+## Installation and Setup Instructions
+
+Clone down this repository. You will need node and npm installed globally on your machine.
+
+Installation: 
+
+``` npm install ```
+
+To Start Server:
+
+``` npm start ```
+
+Make sure you have your spotify web player open so you an play the music!
