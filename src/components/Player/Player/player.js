@@ -4,11 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlayCircle,
   faPauseCircle,
-  faHeart,
+  faStepForward,
+  faStepBackward,
 } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./Player.module.css";
 import Tracks from "./tracks";
+import { SaveTrack } from "./saveTrack";
 
 export const Player = (props) => {
   const { tracks, spotify } = props;
@@ -19,7 +21,9 @@ export const Player = (props) => {
   const [duration, setDuration] = useState(null);
   const [progress, setProgress] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [addTrack, setAddTracks] = useState(false);
+  const [next, setNext] = useState(false);
+  const [prev, setPrev] = useState(false);
+  const [activeTrack, setActiveTrack] = useState(false);
 
   const clickHandler = () => {
     //check if it s playing or not
@@ -57,20 +61,46 @@ export const Player = (props) => {
     });
   };
 
-  const saveTrack = () => {
-    spotify.getMySavedTracks(function (err, data) {
+  const nextHandler = () => {
+    spotify.getMyDevices(function (err, data) {
       if (err) {
         console.error(err);
       } else {
-        console.log("SAVED tracks Button", data.items);
-        spotify.addToMySavedTracks(function (trackId, err, data) {
-          if (err) {
-            console.error(err);
-          } else {
-            setAddTracks(true);
-            console.log("DATA Button", data);
-          }
-        });
+        // check the user is logged into spotify
+        if (data.devices.length) {
+          spotify.skipToNext({ device_id: data.devices[0].id }, function (
+            err,
+            data
+          ) {
+            if (err) {
+              console.error(err);
+            } else {
+              setNext(true);
+            }
+          });
+        }
+      }
+    });
+  };
+
+  const prevHandler = () => {
+    spotify.getMyDevices(function (err, data) {
+      if (err) {
+        console.error(err);
+      } else {
+        // check the user is logged into spotify
+        if (data.devices.length) {
+          spotify.skipToPrevious({ device_id: data.devices[0].id }, function (
+            err,
+            data
+          ) {
+            if (err) {
+              console.error(err);
+            } else {
+              setPrev(true);
+            }
+          });
+        }
       }
     });
   };
@@ -86,10 +116,11 @@ export const Player = (props) => {
           setSong(data.item.name);
           setCover(data.item.album.images[0].url);
           setIsPlaying(data.is_playing);
-          // setAddTracks(data.item.id);
+          setActiveTrack(data.item.id);
           setDuration(data.item.duration_ms);
           setProgress(data.progress_ms);
-          console.log("Current", data.item.id);
+          setNext(false);
+          setPrev(false);
         }
       }
     });
@@ -97,7 +128,6 @@ export const Player = (props) => {
 
   useEffect(() => {
     if (tracks.length) {
-      console.log(tracks.length);
       spotify.getMyDevices(function (err, data) {
         if (err) {
           console.error(err);
@@ -105,10 +135,9 @@ export const Player = (props) => {
           // check the user is logged into spotify
           if (data.devices.length) {
             const uris = tracks.map((track) => {
-              console.log("Uri", track.uri);
               return track.uri;
             });
-            console.log("Uris", uris);
+
             spotify.play(
               {
                 device_id: data.devices[0].id,
@@ -130,32 +159,6 @@ export const Player = (props) => {
         }
       });
     }
-    //if (tracks) {
-    console.log("Tracks", tracks);
-    const ids = tracks.map((track) => {
-      return track.id;
-    });
-    spotify.getMySavedTracks(function (err, data) {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log("SAVED tracks", data.items);
-
-        spotify.addToMySavedTracks({ ids: ids }, function (err, data) {
-          if (err) {
-            console.error(err);
-          } else {
-            // if (ids === data.items.tracks.id) {
-            //   console.log("saved to tracks", ids, data.items[0].track.id);
-            // }
-
-            // setInterval(() => getCurrent(), 1000);
-            console.log("DATA", data);
-          }
-        });
-      }
-    });
-    //}
   }, [spotify, tracks, getCurrent]);
 
   return (
@@ -179,11 +182,12 @@ export const Player = (props) => {
         </div>
 
         <div className={classes.Player}>
-          <div onClick={saveTrack}>
-            <FontAwesomeIcon icon={faHeart} />
-            {/* <button onClick={saveTrack}>Save</button> */}
-          </div>
+          <SaveTrack activeTrack={activeTrack} spotify={spotify} />
           <div>
+            <div onClick={prevHandler}>
+              <FontAwesomeIcon icon={faStepBackward} color="black" size="1x" />
+            </div>
+
             <div onClick={clickHandler}>
               {isPlaying ? (
                 <FontAwesomeIcon
@@ -194,6 +198,9 @@ export const Player = (props) => {
               ) : (
                 <FontAwesomeIcon icon={faPlayCircle} color="orange" size="2x" />
               )}
+            </div>
+            <div onClick={nextHandler}>
+              <FontAwesomeIcon icon={faStepForward} color="black" size="1x" />
             </div>
           </div>
 

@@ -5,8 +5,8 @@ import classes from "./Player.module.css";
 const Tracks = ({ tracks }) => {
   
   return tracks.map((track) => (
-    <div className={classes.Cover}>
-      <img key={track.id} src={track.album.images[0].url} alt="album artwork" />
+    <div key={track.id} className={classes.Cover}>
+      <img src={track.album.images[0].url} alt="album artwork" />
     </div>
   ));
 };
