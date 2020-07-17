@@ -39,7 +39,10 @@ export const SaveTrack = ({ activeTrack, spotify }) => {
 
   return (
     <div onClick={savedHandler}>
-      <FontAwesomeIcon icon={faHeart} color={savedTrack ? "orange" : "black"} />
+      <FontAwesomeIcon
+        icon={faHeart}
+        color={savedTrack ? "#F79857" : "#51596D"}
+      />
     </div>
   );
 };

@@ -37,12 +37,13 @@ const MusicController = (props) => {
         `${country.name}`,
         {
           limit: trackLimit,
-          offset: random,
-          min_popularity: 5,
+          // offset: random
+          min_popularity: 20,
           max_popularity: 80,
         },
 
         function (err, data) {
+          console.log("tack", data);
           if (err) {
             console.error(err);
             setLoggedIn(false);

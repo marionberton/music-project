@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlayCircle,
   faPauseCircle,
-  faStepForward,
-  faStepBackward,
+  faForward,
+  faBackward,
 } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./Player.module.css";
@@ -183,24 +183,27 @@ export const Player = (props) => {
 
         <div className={classes.Player}>
           <SaveTrack activeTrack={activeTrack} spotify={spotify} />
-          <div>
+          <div className={classes.Control}>
             <div onClick={prevHandler}>
-              <FontAwesomeIcon icon={faStepBackward} color="black" size="1x" />
+              <FontAwesomeIcon icon={faBackward} color="#51596D" size="1x" />
             </div>
-
             <div onClick={clickHandler}>
               {isPlaying ? (
                 <FontAwesomeIcon
                   icon={faPauseCircle}
-                  color="orange"
+                  color="#F79857"
                   size="2x"
                 />
               ) : (
-                <FontAwesomeIcon icon={faPlayCircle} color="orange" size="2x" />
+                <FontAwesomeIcon
+                  icon={faPlayCircle}
+                  color="#F79857"
+                  size="2x"
+                />
               )}
             </div>
             <div onClick={nextHandler}>
-              <FontAwesomeIcon icon={faStepForward} color="black" size="1x" />
+              <FontAwesomeIcon icon={faForward} color="#51596D" size="1x" />
             </div>
           </div>
 
