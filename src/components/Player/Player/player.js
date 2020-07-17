@@ -176,8 +176,8 @@ export const Player = (props) => {
               alignSelf: "center",
             }}
           >
-            <h3>{artist}</h3>
-            <p>{song}</p>
+            <h3>{song}</h3>
+            <p>{artist}</p>
           </div>
         </div>
 
