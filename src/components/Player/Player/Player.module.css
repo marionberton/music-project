@@ -41,12 +41,12 @@
 .Cover {
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  margin: 0 5px;
 }
 .MainCover img {
   width: 60px;
   height: auto;
-  margin: 5px;
+  margin: 0 5px;
   align-self: center;
 }
 
