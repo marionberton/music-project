@@ -6,16 +6,16 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
-var PORT = process.env.PORT || 8888;;
+var PORT = process.env.PORT || 8888;
 var express = require("express"); // Express web server framework
 var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
 
-var client_id = "7b4f5ead24504d808423f99c0a8824a8"; // Your client id
-var client_secret = "1f712cee9829498dbbee43533a1848a9"; // Your secret
-var redirect_uri = "http://localhost:8888/callback"; // Your redirect uri
+var client_id = "YOUR_CLIENT_ID"; // Your client id
+var client_secret = "YOUR_SECRET_ID"; // Your secret
+var redirect_uri = "YOUR_REDIRECT_URL"; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
