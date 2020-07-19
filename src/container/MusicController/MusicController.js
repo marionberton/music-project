@@ -38,11 +38,12 @@ const MusicController = (props) => {
         {
           limit: trackLimit,
           offset: random,
-          min_popularity: 5,
+          min_popularity: 30,
           max_popularity: 80,
         },
 
         function (err, data) {
+          console.log("tack", data);
           if (err) {
             console.error(err);
             setLoggedIn(false);

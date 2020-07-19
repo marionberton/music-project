@@ -19,7 +19,7 @@ This project is still developement, user can login with their Spotify premium ac
 * b) Use http//localhost:8888/callback as the Redirect URI
 * c) Make sure to copy your Client ID, Redirect Uri and Client Secret
 
-### 2) In web-api-auth
+### 2) In Server
 
 * a) Go to file authorization_code
 * b) Replace the client_id, redirect_uri and client_secret with YOURS that your got on Spotify

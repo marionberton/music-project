@@ -3,7 +3,6 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-
   backdrop-filter: blur(5px);
   box-shadow: 0 -6px 10px 0 #0000000a;
 }
@@ -14,6 +13,7 @@
   background-color: white;
   height: 100%;
   padding: 10px;
+  justify-content: center;
 }
 
 .Right {
@@ -41,26 +41,29 @@
 .Cover {
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  margin: 0 5px;
 }
 .MainCover img {
   width: 60px;
   height: auto;
-  margin: 5px;
+  margin: 0 5px;
   align-self: center;
 }
 
 .MainCover h3 {
   margin: 0;
   vertical-align: middle;
+  font-size: 12px;
 }
 
 .MainCover p {
   margin: 0;
   vertical-align: middle;
+  font-size: 12px;
 }
 
 .Cover img {
+  border: 3px solid white;
   border-radius: 50%;
   width: 60px;
   height: auto;
@@ -73,20 +76,38 @@
   text-align: center;
   margin-left: 5px;
 }
-progress::-webkit-progress-bar {
+
+.Control {
+  display: flex;
+  flex-direction: row;
+  align-items: middle;
+}
+
+.Control div {
+  align-self: center;
+  padding: 0 5px;
+}
+/* progress::-webkit-progress-bar {
   background-color: #fff;
 }
 progress::-webkit-progress-value {
-  background-color: orange !important;
-}
-/* progress {
+  color: orange !important;
+}  */
+progress {
   -webkit-appearance: none;
   border-radius: 25px;
+  height: 4px;
+  width: 200px;
+  vertical-align: middle;
 }
-::-webkit-progress-value {
-   background-color: orange;
-   border-radius: 25px;
-}  */
+progress::-webkit-progress-bar {
+  border-radius: 25px;
+  background-color: #f3f4f4;
+}
+progress::-webkit-progress-value {
+  background-color: orange;
+  border-radius: 25px;
+}
 
 /* .Progress_bar {
   background-color: black;
