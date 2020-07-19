@@ -37,8 +37,8 @@ const MusicController = (props) => {
         `${country.name}`,
         {
           limit: trackLimit,
-          // offset: random
-          min_popularity: 20,
+          offset: random,
+          min_popularity: 30,
           max_popularity: 80,
         },
 
