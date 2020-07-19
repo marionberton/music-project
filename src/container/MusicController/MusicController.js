@@ -32,11 +32,16 @@ const MusicController = (props) => {
       const trackLimit = 5;
       const random = getRandom(0, maxTracks);
 
-      console.log("track offset", random);
       // Fetching API
       spotify.searchTracks(
         `${country.name}`,
-        { limit: trackLimit, offset: random },
+        {
+          limit: trackLimit,
+          offset: random,
+          min_popularity: 5,
+          max_popularity: 80,
+        },
+
         function (err, data) {
           if (err) {
             console.error(err);
