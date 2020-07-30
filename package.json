@@ -24,12 +24,10 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "request": "^2.88.2",
-    "serve": "^11.3.2",
     "spotify-web-api-js": "^1.4.0",
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "serve": "serve -s build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
