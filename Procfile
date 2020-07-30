@@ -1,2 +1,2 @@
-web: node server/index.js
+web: node server.js
 web: npm run serve

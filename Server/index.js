@@ -1,1 +1,0 @@
-require('./authorization_code/app')

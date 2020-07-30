@@ -5,17 +5,20 @@
  *
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
- */
-var PORT = process.env.PORT || 'https://apala-music.herokuapp.com/callback';
-var express = require("../node_modules/express"); // Express web server framework
-var request = require("../node_modules/request"); // "Request" library
-var cors = require("../node_modules/cors/lib");
-var querystring = require("querystring");
-var cookieParser = require("../node_modules/cookie-parser");
+ *
+ **/
 
-var client_id = "7b4f5ead24504d808423f99c0a8824a8"; // Your client id
-var client_secret = "1f712cee9829498dbbee43533a1848a9"; // Your secret
-var redirect_uri = "https://apala-music.herokuapp.com/callback"; // Your redirect uri
+require("dotenv-safe/config");
+var PORT = process.env.PORT || 5000;
+var express = require("express");
+var request = require("request");
+var cors = require("cors");
+var querystring = require("querystring");
+var cookieParser = require("cookie-parser");
+
+var client_id = process.env.CLIENT_ID; // Your client id
+var client_secret = process.env.CLIENT_SECRET; // Your secret
+var redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -38,11 +41,11 @@ var stateKey = "spotify_auth_state";
 var app = express();
 
 app
-  .use(express.static(__dirname + "/public"))
+  .use(express.static(__dirname + "/build"))
   .use(cors())
   .use(cookieParser());
 
-app.get("/login", function (req, res) {
+app.get("/api/login", function (req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
@@ -61,7 +64,7 @@ app.get("/login", function (req, res) {
   );
 });
 
-app.get("/callback", function (req, res) {
+app.get("/api/callback", function (req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
 
@@ -98,20 +101,9 @@ app.get("/callback", function (req, res) {
         var access_token = body.access_token,
           refresh_token = body.refresh_token;
 
-        var options = {
-          url: "https://api.spotify.com/v1/me",
-          headers: { Authorization: "Bearer " + access_token },
-          json: true,
-        };
-
-        // use the access token to access the Spotify Web API
-        request.get(options, function (error, response, body) {
-          console.log(body);
-        });
-
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          "http://localhost:3000/#" +
+          "/#" +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token,
@@ -129,7 +121,7 @@ app.get("/callback", function (req, res) {
   }
 });
 
-app.get("/refresh_token", function (req, res) {
+app.get("/api/refresh_token", function (req, res) {
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
   var authOptions = {
@@ -156,5 +148,5 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-console.log("Listening on 8888");
+console.log("Listening on 5000");
 app.listen(PORT);
