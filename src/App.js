@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import { getSpotify } from "./components/Player/spotify";
 import MusicController from "./container/MusicController/MusicController";
-import { Signin } from "./components/signin/Signin";
 
 const App = (props) => {
   const spotify = getSpotify();
@@ -17,7 +16,6 @@ const App = (props) => {
             path="/"
             render={() => <MusicController spotify={spotify} />}
           />
-          {/* <Route path="/signin" render={() => <Signin spotify={spotify} />} /> */}
         </Switch>
       </Layout>
     </div>
@@ -27,3 +25,4 @@ export default App;
 
 // If you add the EXACT property the order does not matter
 // without EXACT it does
+

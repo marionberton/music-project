@@ -4,8 +4,7 @@ import { Search } from "../../components/Search/Search";
 import { Player } from "../../components/Player/Player/player";
 import { getRandom } from "../../util/util";
 import { getHashParams } from "../../util/util";
-import { Signin } from "../../components/signin/Signin";
-import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import Landing from "../landing";
 
 import classes from "./MusicController.module.css";
 
@@ -19,9 +18,9 @@ const MusicController = (props) => {
   useEffect(() => {
     //for spotify Signin
     const params = getHashParams();
-    console.log(params);
+
     const token = params.access_token;
-    console.log("TOKEN", token);
+
     if (token) {
       spotify.setAccessToken(token);
       setLoggedIn(true);
@@ -43,7 +42,6 @@ const MusicController = (props) => {
         },
 
         function (err, data) {
-          console.log("tack", data);
           if (err) {
             console.error(err);
             setLoggedIn(false);
@@ -66,11 +64,13 @@ const MusicController = (props) => {
           </div>
         </>
       ) : (
-        <section>
-          <div>
-            <h1>Please sign in with Spotify</h1>
-          </div>
-        </section>
+        <Landing />
+
+        // <section>
+        //   <div>
+        //     <h1>Please sign in with Spotify</h1>
+        //   </div>
+        // </section>
       )}
     </>
   );

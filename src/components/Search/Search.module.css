@@ -26,7 +26,7 @@
 }
 
 .SearchItem input {
-  background: url("../../assets/images/search.svg") no-repeat;
+  background: url("../../assets/search.svg") no-repeat;
   background-position: 2% 50%;
   padding: 10px 0 10px 30px;
   width: 100%;

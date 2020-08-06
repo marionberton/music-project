@@ -102,10 +102,10 @@ progress {
 }
 progress::-webkit-progress-bar {
   border-radius: 25px;
-  background-color: #f3f4f4;
+  background-color: #b8b8b8;
 }
 progress::-webkit-progress-value {
-  background-color: orange;
+  background-color: #F79857;
   border-radius: 25px;
 }
 

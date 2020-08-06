@@ -1,13 +1,15 @@
 .Toolbar {
-  background-color: #f2f6fa;
-  height: 56px;
+  background-color: white;
+  height: 80px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 20px;
   box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 -6px 10px 10px #0000000a;
 }
 
 .Toolbar nav {
