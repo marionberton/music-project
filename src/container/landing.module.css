@@ -1,16 +1,14 @@
 .Background {
-  background-image: url("../assets/world-map.svg");
+  background-image: url("../assets/world-map1.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 80%;
   z-index: 10;
 }
 
 .artists {
-  background-image: url("../assets/Apalaa.svg");
+  background-image: url("../assets/artistes-3.png");
   background-position: center 70%;
   background-repeat: no-repeat;
-
   z-index: 100;
   height: 100%;
 }
@@ -55,4 +53,16 @@ section {
   width: 200px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .artists p {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .artists h1 {
+    font-size: 45px;
+  }
 }
